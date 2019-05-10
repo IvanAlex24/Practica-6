@@ -1,0 +1,218 @@
+%!TEX options = --shell-escape
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{import}
+\usepackage{xcolor}
+\usepackage{float}
+% \usepackage{svg}
+\usepackage
+[
+letterpaper,
+left=3cm,
+right=3cm,
+top=2.5cm,
+bottom=2.5cm
+]
+{geometry}
+\usepackage{sectsty}
+\usepackage{hyperref}
+% Encabezado
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Practica 6}
+\lhead{Pérez Rosales \& Sydykova Méndez}
+\cfoot{\thepage}
+
+\makeatletter
+  \def\relativepath{imagenes/}
+\makeatother
+\graphicspath{{imagenes/}}
+
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[2]{%
+\executeiffilenewer{\relativepath#1.svg}{\relativepath#1.pdf}%
+{inkscape --file=\relativepath#1.svg --export-area-drawing --without-gui --export-pdf=\relativepath#1.pdf}%
+\includegraphics[scale=#2]{#1.pdf}%
+}
+
+\begin{document}
+%%---PORTADA---%%
+\thispagestyle{empty}
+%Logo Bátiz
+\begin{picture}(0,0)
+\put(370,-55){\hbox{\includegraphics[scale=0.27]{batiz.png}}}
+\end{picture}
+%Logo IPN
+\begin{picture}(0,0)
+\put(-10,-55){\hbox{\includegraphics[scale=0.3]{ipn.png}}}
+\end{picture}
+
+\begin{center}
+\huge
+\vspace{-1cm}
+Instituto Politécnico Nacional\\
+\large
+\vspace{5mm}
+Centro de Estudios Científicos y Tecnológicos 9\\
+``Juan de Dios Bátiz''\\
+\vspace{20mm}
+\Large
+Alumnos:\\
+\begin{tabular}{cl}
+Pérez Rosales Iván Alejandro & 2017094761 \\
+Sydykova Méndez Nuria & 2017091272
+\end{tabular}\\
+\vspace{10mm}
+Grupo:\\
+6IM6\\
+\vspace{15mm}
+\LARGE
+\textbf{Gel antibacterial y crema para manos}\\
+\textbf{Practica No. 6}\\
+\vspace{15mm}
+\Large
+Profesora:
+Gaspar Sanchez Angela Gabriela
+\end{center}
+%%--FIN PORTADA--%%
+\clearpage
+	
+\section{Objetivos de la practica}
+	El alumno aplicará los conocimientos, habilidades y actitudes adquiridos en química inorgánica y orgánica para la obtención de un producto de uso cotidiano, en donde se fundamentará químicamente su proceso de elaboración.
+% No se si aquí va el objetivo que dice la practica o nosotros lo hacemos, de todas formas aqui hay un objetivo si no se usa lo borras:
+\section{Reactivos}
+%Investigación de las materias primas.
+\begin{description}
+	%GEL
+	\item[Trietalonamina] Es un compuesto químico orgánico formado, principalmente, por una amina terciaria y tres grupos y tres grupos hidróxilos. La trietanolamina se usa principalmente combinada con ácidos grasos tales como el ácido esteárico y el oleico. Combinada con éstos en proporciones equimoleculares forma un jabón que puede ser usado como agente emulsionante para preparar emulsiones estables con un pH aproximado de 8.
+	%GEL
+	\item[Carbopol] El carbopol, o las resinas de carbopol, son polímeros reticulados del ácido acrílico. Se les considera polímeros hidrofílicos, es decir, no repelen el agua. La capacidad espesante del carbopol, así como su capacidad para aumentar sus niveles de viscosidad lo convierten en uno de los ingredientes fundamentales en la fabricación de geles.
+	%GEL
+	\item[Gliserina] Es un alcohol con tres grupos hidroxilos (–OH). Se trata de uno de los principales productos de la degradación digestiva de los lípidos, paso previo para el ciclo de Krebs y también aparece como un producto intermedio de la fermentación alcohólica. La glicerina se puede usar para la obtención de productos de alto valor añadido, como son:
+	\begin{enumerate}
+		\item Fibras sintéticas
+		\item Cosméticos
+		\item Surfactantes
+		\item Lubricantes
+		\item Productos de alimentación y bebidas
+		\item Pinturas
+	\end{enumerate}
+	%GEL
+	\item[Alcohol etílico] Es un compuesto químico orgánico de la clase de los alcoholes que se encuentra en las bebidas alcohólicas y es producido por las levaduras o mediante procesos petroquímicos.
+	%CREMA
+	\item[Lanolina] La lanolina es una cera natural producida por las glándulas sebáceas de algunos mamíferos, especialmente del ganado ovino, preparada y que se aplica para diversos usos industriales, farmacéuticos y domésticos.
+	%crema
+	\item[Cera de abeja] La cera creada en la colmena del género, es el material que las abejas usan para construir sus nidos. Es producida por las abejas melíferas jóvenes que la segregan como líquido a través de sus glándulas cereras. Al contacto con el aire, la cera se endurece y forma pequeñas escamillas de cera en la parte inferior de la abeja.
+
+	Tiene muchos usos tradicionales y otros modernos. Por su alto precio se utiliza cada vez menos en algunos sectores, como en la fabricación de velas, labia y crema hidratante.
+	%crema
+	\item[Manteca de cacao] Es la grasa natural comestible procedente del haba del cacao, extraída durante el proceso de fabricación del chocolate y que se separa de la masa de cacao mediante presión.
+	%crema
+	\item[Aceite de almendras] El aceite de almendras es un nutriente utilizado desde la antigüedad para belleza de la piel y en el tratamiento de heridas y lesiones. Puede utilizarse para tratar las manchas cutáneas y para nutrir e hidratar la piel seca. Sus propiedades emolientes favorecen el equilibrio hídrico a nivel cutáneo y previenen la pérdida de agua transepidérmica. Además el aceite de almendras se considera un extraordinario aliado para la limpieza de la piel.
+\end{description}
+\section{Listado de materias primas, productos, subproductos, y residuos}
+
+	\begin{itemize}
+		\item \textbf{Crema para manos}
+		\begin{itemize}
+			\item Materias Primas
+			\begin{enumerate}
+				\item Lanolina\\
+					Previamente fundida
+				\item Cera de abeja
+				\item Manteca de cacao
+				\item Aceite de almendras
+			\end{enumerate}
+			\item Productos
+				\begin{enumerate}
+					\item Crema para manos.		
+				\end{enumerate}
+			\item Subproductos
+			\item Residuos
+		\end{itemize}
+
+
+		\item \textbf{Gel antibacterial}
+		\begin{itemize}
+			\item Materias primas
+			\begin{enumerate}
+				\item Agua
+				\item Alcohol etílico
+				\item Carbopol
+				\item Glicerina
+				\item Trietanolamina
+			\end{enumerate}
+			\item Productos\\
+				\begin{enumerate}
+					\item Gel antibacterial.
+				\end{enumerate}
+			\item Subproductos
+			\item Residuos
+		\end{itemize}
+	\end{itemize}
+
+\section{Etapas del proceso}
+	\subsection{Crema para manos}
+		\begin{enumerate}
+			\item En un vaso de precipitados de $150 ml$ agregar $2 ml$ de lanolina fundida previamente e introdúcelo dentro de baño maría que contenga la tercera parte de agua caliente, manteniendo el fuego bajo.\\
+			%Operacion es para cambios fisicos
+			Corresponde a una: Operación unitaria.  
+
+
+			\item Agita la lanolina y agrega los siguientes ingredientes: $1g$ de cera de abeja, $2g$ de manteca de cacao y $7ml$ de aceite de almendras.\\
+			%Proceso unitario para un cambio quimico
+			Corresponde a un: Proceso unitario.
+			\item Agita vigorosamente hasta formar una mezcla espesa y homogénea. Aun a fuego bajo para conservar la misma temperatura, agregue $20ml$ de agua destilada.\\
+			Corresponde a un: Proceso unitario.
+
+			\item Cuando la mezcla se encuentre homogénea, retirala del fuego y continúa agitando hasta que se enfríe completamente. Sin interrumpir la agitación añade 3 o 4 gotas de esencia.\\
+			Corresponde a una: Operación unitaria.  
+
+
+			\item Vacia con la ayuda de una espátula la crema al recipiente de plástico, tápalo y etiquétalo.
+		\end{enumerate}
+	\subsection{Gel antibacterial}	
+		\begin{enumerate}
+			\item En un recipiente de plástico de $500 ml$; agrega las siguientes sustancias: $20 ml$ de agua y $30 ml$ de alcohol etílico.\\
+			Corresponde a un: Proceso unitario.			
+
+			\item Pesa $0.5 g$ de carbopol en una balanza granataria, adiciona poco a poco al recipiente de plástico que contiene la mezcla de alcohol-agua; agitando vigorosamente, hasta formar una mezcla homogénea.\\
+			Corresponde a una: Operación unitaria.			
+
+			\item Mide $1 ml$ de glicerina mediante la probeta de $10 ml$ y agregala a la mezcla anterior, continuar agitando intensamente ya que depende de la agitación se formará un mejor producto.\\
+			Corresponde a un: Proceso unitario.
+
+			\item Sin deja de agitar, agrega gota a gota trietanolamina (maximo 2 gotas) y continúa agitando hasta obtener la apariencia y textura adecuada. Al final agrega 3 gotas de escencia y agita.\\
+			Corresponde a un: Proceso unitario.
+
+			\item Con ayuda de la cucharilla, vierte la mezcla en el recipiente para envasar, tápalo. Coloca la etiqueta con el nombre del producto, fecha de elaboración y consérvalo en un lugar fresco.
+		\end{enumerate}
+
+\section{Diagrama de bloques}
+\section{Balance de masa elemental}
+\section{Preguntas}
+\begin{enumerate}
+	\item ¿Qué es un emulsificante?\\
+	es una sustancia que ayuda en la mezcla de dos sustancias que normalmente son poco miscibles o difíciles de mezclar. De esta manera, al añadir este emulsionante, se consigue formar una emulsión.
+	%\item Completa el cuadro no se si agregarlo 
+	\item ¿Por qué se le llama alcohol desnaturalizado?\\
+	Alcohol etílico mezclado con ciertos productos que le comunican sabor desagradable y lo inutilizan para la bebida, pero no para sus aplicaciones industriales.
+	\item ¿En qué otros productos se puede utilizar trietanolamina?\\
+	Este compuesto es ampliamente utilizado en productos de cuidado personal como regulador de pH y agente alcalinizante; se usa en la fabricación de productos de limpieza, impermeabilizantes, geles para cabello, gel desinfectante, cremas, lociones, limpiadores de piel, shampoo, productos para cabello, desodorantes, fragancias, maquillaje, productos para uñas y cutícula, en el área del cemento y del concreto, agricultura y fotografía.
+	\item ¿Qué es un aglomerante?
+	Se llaman materiales aglomerantes aquellos materiales que, en estado pastoso y con consistencia variable, tienen la propiedad de poderse moldear, de adherirse fácilmente a otros materiales, de unirlos entre sí, protegerlos, endurecerse y alcanzar resistencias mecánicas considerables. Estos materiales son de vital importancia en la construcción, para formar parte de casi todos los elementos de la misma.
+\end{enumerate}
+% \section{Costo}
+\section{Conclusión}
+
+
+
+
+\end{document}	
